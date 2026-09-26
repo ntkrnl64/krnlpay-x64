@@ -1,0 +1,18 @@
+# Copy to .dev.vars. These values stay on this machine.
+# Production secrets are set with: bunx wrangler secret put NAME
+#
+# Password is never stored in plaintext. Generate the hash with:
+#   bun run hash-password
+# and paste only the hash into ADMIN_PASSWORD_HASH.
+#
+# TURNSTILE_HOSTNAMES is this deployment's frontend host list.
+# A production value must not include localhost or 127.0.0.1.
+
+ALIPAY_APP_ID=
+ALIPAY_PRIVATE_KEY=
+ALIPAY_PUBLIC_KEY=
+ALIPAY_NOTIFY_URL=https://example.com/api/v1/alipay/orders/notify
+ADMIN_PASSWORD_HASH=
+TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET=
+TURNSTILE_HOSTNAMES=

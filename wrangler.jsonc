@@ -1,0 +1,56 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "krnlpay-x64",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-09-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "ALIPAY_GATEWAY": "https://openapi.alipay.com/gateway.do"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "krnlpay",
+      "database_id": "00000000-0000-0000-0000-000000000001",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Period can only be 10 or 60 seconds, and counters are per Cloudflare location.
+  // 80/minute is about 4800/hour, close to the original 5000/hour API cap.
+  // 2/minute is about 120/hour, close to the original 100/hour create cap.
+  "ratelimits": [
+    {
+      "name": "ALIPAY_API_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 80,
+        "period": 60
+      }
+    },
+    {
+      "name": "CREATE_ORDER_LIMITER",
+      "namespace_id": "1002",
+      "simple": {
+        "limit": 2,
+        "period": 60
+      }
+    },
+    {
+      "name": "ADMIN_LOGIN_LIMITER",
+      "namespace_id": "1003",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
+}
