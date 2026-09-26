@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "krnlpay-x64",
+  "routes": [
+    { "pattern": "pay.krnl64.win", "custom_domain": true }
+  ],
   "main": "./worker/index.ts",
   "compatibility_date": "2026-09-26",
   "compatibility_flags": ["nodejs_compat"],
