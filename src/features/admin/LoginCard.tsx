@@ -1,6 +1,5 @@
 import {
   Button,
-  Caption1,
   Field,
   Input,
   MessageBar,
