@@ -20,7 +20,7 @@
     {
       "binding": "DB",
       "database_name": "krnlpay",
-      "database_id": "00000000-0000-0000-0000-000000000001",
+      "database_id": "912b75ac-6946-4888-ad2d-0a98fbb862dd",
       "migrations_dir": "migrations"
     }
   ],
